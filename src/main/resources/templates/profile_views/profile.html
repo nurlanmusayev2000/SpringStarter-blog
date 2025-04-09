@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head :: head"></head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <div class="bg-box">
+      <img src="images/hero-bg.jpg" alt="">
+    </div>
+    <header th:replace="/fragments/header :: header"></header>
+  </div>
+
+<section class="about_section layout_padding">
+  <div class="container ">
+    <h2>Profile</h2>
+    <!--<div>
+     <img th:src="@{${photo}}" class="rounded-circle" style="width: 150px; float: left; padding: 10px 10px;" alt="Avatar">
+    </div>-->
+      <form th:action="@{/profile}" th:object="${account}" method="post">
+        <div class="form-group">
+        <label for="firstname">First Name:</label>
+        <input th:field="*{firstname}" name="firstname" type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+        <label for="lastname">lastname:</label>
+        <input th:field="*{lastname}" name="lastname" type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+        <label for="email">Email:</label>
+        <input th:field="*{email}" name="email" type="email" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+        <label for="password">Password:</label>
+        <input th:field="*{password}" name="password"  type="password"  class="form-control" required>
+        </div>
+        <div class="form-group">
+        <label for="age">Age:</label>
+        <input th:field="*{age}" name="age" type="number"  class="form-control" required>
+        </div>
+        <div class="form-group">
+        <label for="date_of_birth">Birthday:</label>
+        <input th:field="*{date_of_birth}" name="date_of_birth" type="date" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select th:field="*{gender}" name="gender" id="gender"  class="form-control ">
+          <option value="Male">Male</option>
+          <option value="Female">FeMale</option>
+          <option value="Others">Others</option>
+        </select>
+        </div>
+         <button type="submit" class="btn btn-primary my-1">Update</button>
+
+
+      </form>
+
+  </div>
+</section>
+
+<footer th:replace="/fragments/footer :: footer"></footer>
+
+</body>
+
+</html>

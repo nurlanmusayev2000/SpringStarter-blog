@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head :: head"></head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <div class="bg-box">
+      <img src="/images/hero-bg.jpg" alt="">
+    </div>
+<header th:replace="/fragments/header :: header"></header>
+  </div>
+
+  <section class="about_section layout_padding">
+    <div class="container  ">
+ 		<h2>ADD A POST</h2>
+    <form th:action="@{/post/add}" th:object="${post}" method="post">
+      <input type="hidden" id="account" name="account" th:field="*{account}">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input id="title" type="text" name="title" class="form-control" th:field="*{title}" required>
+        <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="alert alert-danger" role="alert" >title Error</p>
+      </div>
+      <div class="form-group">
+        <label for="body">Body:</label>
+        <textarea id="editor" name="body" th:field="*{body}"></textarea>
+        <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}" class="alert alert-danger" role="alert" >body Error</p>
+
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+
+    </div>
+  </section>
+
+<footer th:replace="/fragments/footer :: footer"></footer>
+
+</body>
+
+</html>
